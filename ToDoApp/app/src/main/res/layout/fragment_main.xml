@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.MainFragment">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/colorYellowBackground">
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           app:layout_constraintHeight_percent="0.15"
+           android:text="@string/to_do"
+           android:gravity="center"
+           android:fontFamily="@font/dustismo_bold"
+           android:textSize="40dip"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           />
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:layout_width="409dp"
+           android:layout_height="619dp"
+           tools:layout_editor_absoluteX="1dp"
+           tools:layout_editor_absoluteY="111dp" />
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
