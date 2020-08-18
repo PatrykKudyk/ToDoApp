@@ -8,6 +8,7 @@ import com.partos.flashback.db.DataBaseHelper
 import com.partos.todoapp.R
 import com.partos.todoapp.adapters.MarginItemDecoration
 import com.partos.todoapp.adapters.recycler.ToDoRecyclerViewAdapter
+import com.partos.todoapp.logic.listeners.MainFragmentListeners
 import com.partos.todoapp.models.ToDo
 
 class MainFragmentLogic {
@@ -17,6 +18,7 @@ class MainFragmentLogic {
     fun initFragment(rootView: View) {
         attachViews(rootView)
         attachRecyclerView(rootView.context)
+        MainFragmentListeners().initListeners(rootView, recyclerView)
     }
 
     private fun attachRecyclerView(context: Context) {

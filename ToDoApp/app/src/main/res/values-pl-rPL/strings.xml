@@ -3,5 +3,6 @@
     <string name="app_name">ToDoApp</string>
     <string name="to_do">Do Zrobienia</string>
     <string name="toast_no_text">Nie podano tekstu</string>
+    <string name="delete_done">Usuń zrobione</string>
 
 </resources>
