@@ -12,23 +12,26 @@
        android:background="@color/colorYellowBackground">
 
        <TextView
+           android:id="@+id/textView"
            android:layout_width="match_parent"
            android:layout_height="0dp"
-           app:layout_constraintHeight_percent="0.15"
-           android:text="@string/to_do"
-           android:gravity="center"
            android:fontFamily="@font/dustismo_bold"
+           android:gravity="center"
+           android:text="@string/to_do"
            android:textSize="40dip"
-           app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           />
+           app:layout_constraintHeight_percent="0.15"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
 
        <androidx.recyclerview.widget.RecyclerView
-           android:layout_width="409dp"
-           android:layout_height="619dp"
-           tools:layout_editor_absoluteX="1dp"
-           tools:layout_editor_absoluteY="111dp" />
+           android:id="@+id/main_todo_recycler_view"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHeight_percent="0.85"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
    </androidx.constraintlayout.widget.ConstraintLayout>
