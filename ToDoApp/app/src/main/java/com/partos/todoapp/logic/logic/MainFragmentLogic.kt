@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.partos.flashback.db.DataBaseHelper
 import com.partos.todoapp.R
 import com.partos.todoapp.adapters.MarginItemDecoration
 import com.partos.todoapp.adapters.recycler.ToDoRecyclerViewAdapter
@@ -19,10 +20,13 @@ class MainFragmentLogic {
     }
 
     private fun attachRecyclerView(context: Context) {
+        val db = DataBaseHelper(context)
         val layoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = layoutManager
         recyclerView.addItemDecoration(MarginItemDecoration(12))
-        recyclerView.adapter = ToDoRecyclerViewAdapter(ArrayList<ToDo>())
+        val list = db.getToDoList()
+        list.add(ToDo(-1, "no", 0))
+        recyclerView.adapter = ToDoRecyclerViewAdapter(list)
     }
 
     private fun attachViews(rootView: View) {
