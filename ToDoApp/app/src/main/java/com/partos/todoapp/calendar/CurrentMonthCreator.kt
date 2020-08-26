@@ -1,11 +1,17 @@
 package com.partos.todoapp.calendar
 
 import android.content.Context
+import android.os.Handler
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.partos.flashback.db.DataBaseHelper
+import com.partos.todoapp.MyApp
 import com.partos.todoapp.R
+import com.partos.todoapp.activities.MainActivity
 import com.partos.todoapp.adapters.recycler.CurrentRentsViewHolder
+import com.partos.todoapp.adapters.recycler.ToDoRecyclerViewAdapter
 import com.partos.todoapp.models.Date
+import com.partos.todoapp.models.ToDo
 import kotlinx.android.synthetic.main.cell_month.view.*
 
 class CurrentMonthCreator(val context: Context) {
@@ -212,7 +218,7 @@ class CurrentMonthCreator(val context: Context) {
         var cell5 = holder.view.cell_month_text_04
         var cell6 = holder.view.cell_month_text_05
         var cell7 = holder.view.cell_month_text_06
-        var array1 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
+        val array1 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
 
         cell = holder.view.cell_month_text_10
         cell2 = holder.view.cell_month_text_11
@@ -222,7 +228,7 @@ class CurrentMonthCreator(val context: Context) {
         cell6 = holder.view.cell_month_text_15
         cell7 = holder.view.cell_month_text_16
 
-        var array2 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
+        val array2 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
 
         cell = holder.view.cell_month_text_20
         cell2 = holder.view.cell_month_text_21
@@ -232,7 +238,7 @@ class CurrentMonthCreator(val context: Context) {
         cell6 = holder.view.cell_month_text_25
         cell7 = holder.view.cell_month_text_26
 
-        var array3 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
+        val array3 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
 
         cell = holder.view.cell_month_text_30
         cell2 = holder.view.cell_month_text_31
@@ -242,7 +248,7 @@ class CurrentMonthCreator(val context: Context) {
         cell6 = holder.view.cell_month_text_35
         cell7 = holder.view.cell_month_text_36
 
-        var array4 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
+        val array4 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
 
 
         cell = holder.view.cell_month_text_40
@@ -253,7 +259,7 @@ class CurrentMonthCreator(val context: Context) {
         cell6 = holder.view.cell_month_text_45
         cell7 = holder.view.cell_month_text_46
 
-        var array5 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
+        val array5 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
 
 
         cell = holder.view.cell_month_text_50
@@ -264,7 +270,7 @@ class CurrentMonthCreator(val context: Context) {
         cell6 = holder.view.cell_month_text_55
         cell7 = holder.view.cell_month_text_56
 
-        var array6 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
+        val array6 = arrayOf(cell, cell2, cell3, cell4, cell5, cell6, cell7)
 
 
         cellsList = arrayOf(array1, array2, array3, array4, array5, array6)
@@ -274,10 +280,10 @@ class CurrentMonthCreator(val context: Context) {
         for (i in 0..4) {
             for (j in 0..6) {
                 if (i <= 3) {
-                    setTextView(i, j, 0, dayList)
+                    setTextView(i, j, 0, dayList, holder)
                 } else {
                     if (j <= 2) {
-                        setTextView(i, j, 0, dayList)
+                        setTextView(i, j, 0, dayList, holder)
                     }
                 }
             }
@@ -289,13 +295,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 0) {
-                        setTextView(i, j, 1, dayList)
+                        setTextView(i, j, 1, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 1, dayList)
+                    setTextView(i, j, 1, dayList, holder)
                 } else {
                     if (j <= 3) {
-                        setTextView(i, j, 1, dayList)
+                        setTextView(i, j, 1, dayList, holder)
                     }
                 }
             }
@@ -307,13 +313,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 1) {
-                        setTextView(i, j, 2, dayList)
+                        setTextView(i, j, 2, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 2, dayList)
+                    setTextView(i, j, 2, dayList, holder)
                 } else {
                     if (j <= 4) {
-                        setTextView(i, j, 2, dayList)
+                        setTextView(i, j, 2, dayList, holder)
                     }
                 }
             }
@@ -325,13 +331,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 2) {
-                        setTextView(i, j, 3, dayList)
+                        setTextView(i, j, 3, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 3, dayList)
+                    setTextView(i, j, 3, dayList, holder)
                 } else {
                     if (j <= 5) {
-                        setTextView(i, j, 3, dayList)
+                        setTextView(i, j, 3, dayList, holder)
                     }
                 }
             }
@@ -343,10 +349,10 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 3) {
-                        setTextView(i, j, 4, dayList)
+                        setTextView(i, j, 4, dayList, holder)
                     }
                 } else if (i <= 4) {
-                    setTextView(i, j, 4, dayList)
+                    setTextView(i, j, 4, dayList, holder)
                 }
             }
         }
@@ -357,13 +363,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 4) {
-                        setTextView(i, j, 5, dayList)
+                        setTextView(i, j, 5, dayList, holder)
                     }
                 } else if (i <= 4) {
-                    setTextView(i, j, 5, dayList)
+                    setTextView(i, j, 5, dayList, holder)
                 } else {
                     if (j == 0) {
-                        setTextView(i, j, 5, dayList)
+                        setTextView(i, j, 5, dayList, holder)
                     }
                 }
             }
@@ -375,13 +381,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 5) {
-                        setTextView(i, j, 6, dayList)
+                        setTextView(i, j, 6, dayList, holder)
                     }
                 } else if (i <= 4) {
-                    setTextView(i, j, 6, dayList)
+                    setTextView(i, j, 6, dayList, holder)
                 } else {
                     if (j <= 1) {
-                        setTextView(i, j, 6, dayList)
+                        setTextView(i, j, 6, dayList, holder)
                     }
                 }
             }
@@ -392,10 +398,10 @@ class CurrentMonthCreator(val context: Context) {
         for (i in 0..4) {
             for (j in 0..6) {
                 if (i <= 3) {
-                    setTextView(i, j, 0, dayList)
+                    setTextView(i, j, 0, dayList, holder)
                 } else {
                     if (j <= 1) {
-                        setTextView(i, j, 0, dayList)
+                        setTextView(i, j, 0, dayList, holder)
                     }
                 }
             }
@@ -407,13 +413,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 0) {
-                        setTextView(i, j, 1, dayList)
+                        setTextView(i, j, 1, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 1, dayList)
+                    setTextView(i, j, 1, dayList, holder)
                 } else {
                     if (j <= 2) {
-                        setTextView(i, j, 1, dayList)
+                        setTextView(i, j, 1, dayList, holder)
                     }
                 }
             }
@@ -425,13 +431,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 1) {
-                        setTextView(i, j, 2, dayList)
+                        setTextView(i, j, 2, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 2, dayList)
+                    setTextView(i, j, 2, dayList, holder)
                 } else {
                     if (j <= 3) {
-                        setTextView(i, j, 2, dayList)
+                        setTextView(i, j, 2, dayList, holder)
                     }
                 }
             }
@@ -443,13 +449,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 2) {
-                        setTextView(i, j, 3, dayList)
+                        setTextView(i, j, 3, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 3, dayList)
+                    setTextView(i, j, 3, dayList, holder)
                 } else {
                     if (j <= 4) {
-                        setTextView(i, j, 3, dayList)
+                        setTextView(i, j, 3, dayList, holder)
                     }
                 }
             }
@@ -461,13 +467,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 3) {
-                        setTextView(i, j, 4, dayList)
+                        setTextView(i, j, 4, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 4, dayList)
+                    setTextView(i, j, 4, dayList, holder)
                 } else {
                     if (j <= 5) {
-                        setTextView(i, j, 4, dayList)
+                        setTextView(i, j, 4, dayList, holder)
                     }
                 }
             }
@@ -479,10 +485,10 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 4) {
-                        setTextView(i, j, 5, dayList)
+                        setTextView(i, j, 5, dayList, holder)
                     }
                 } else if (i <= 4) {
-                    setTextView(i, j, 5, dayList)
+                    setTextView(i, j, 5, dayList, holder)
                 }
             }
         }
@@ -493,13 +499,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 5) {
-                        setTextView(i, j, 6, dayList)
+                        setTextView(i, j, 6, dayList, holder)
                     }
                 } else if (i <= 4) {
-                    setTextView(i, j, 6, dayList)
+                    setTextView(i, j, 6, dayList, holder)
                 } else {
                     if (j == 0) {
-                        setTextView(i, j, 6, dayList)
+                        setTextView(i, j, 6, dayList, holder)
                     }
                 }
             }
@@ -510,7 +516,7 @@ class CurrentMonthCreator(val context: Context) {
         for (i in 0..3) {
             for (j in 0..6) {
                 if (i <= 4) {
-                    setTextView(i, j, 0, dayList)
+                    setTextView(i, j, 0, dayList, holder)
                 }
             }
         }
@@ -521,13 +527,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 0) {
-                        setTextView(i, j, 1, dayList)
+                        setTextView(i, j, 1, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 1, dayList)
+                    setTextView(i, j, 1, dayList, holder)
                 } else {
                     if (j == 0) {
-                        setTextView(i, j, 1, dayList)
+                        setTextView(i, j, 1, dayList, holder)
                     }
                 }
             }
@@ -539,13 +545,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 1) {
-                        setTextView(i, j, 2, dayList)
+                        setTextView(i, j, 2, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 2, dayList)
+                    setTextView(i, j, 2, dayList, holder)
                 } else {
                     if (j <= 1) {
-                        setTextView(i, j, 2, dayList)
+                        setTextView(i, j, 2, dayList, holder)
                     }
                 }
             }
@@ -557,13 +563,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 2) {
-                        setTextView(i, j, 3, dayList)
+                        setTextView(i, j, 3, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 3, dayList)
+                    setTextView(i, j, 3, dayList, holder)
                 } else {
                     if (j <= 2) {
-                        setTextView(i, j, 3, dayList)
+                        setTextView(i, j, 3, dayList, holder)
                     }
                 }
             }
@@ -575,13 +581,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 3) {
-                        setTextView(i, j, 4, dayList)
+                        setTextView(i, j, 4, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 4, dayList)
+                    setTextView(i, j, 4, dayList, holder)
                 } else {
                     if (j <= 3) {
-                        setTextView(i, j, 4, dayList)
+                        setTextView(i, j, 4, dayList, holder)
                     }
                 }
             }
@@ -593,13 +599,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 4) {
-                        setTextView(i, j, 5, dayList)
+                        setTextView(i, j, 5, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 5, dayList)
+                    setTextView(i, j, 5, dayList, holder)
                 } else {
                     if (j <= 4) {
-                        setTextView(i, j, 5, dayList)
+                        setTextView(i, j, 5, dayList, holder)
                     }
                 }
             }
@@ -611,13 +617,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 5) {
-                        setTextView(i, j, 6, dayList)
+                        setTextView(i, j, 6, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 6, dayList)
+                    setTextView(i, j, 6, dayList, holder)
                 } else {
                     if (j <= 5) {
-                        setTextView(i, j, 6, dayList)
+                        setTextView(i, j, 6, dayList, holder)
                     }
                 }
             }
@@ -628,10 +634,10 @@ class CurrentMonthCreator(val context: Context) {
         for (i in 0..4) {
             for (j in 0..6) {
                 if (i <= 4) {
-                    setTextView(i, j, 0, dayList)
+                    setTextView(i, j, 0, dayList, holder)
                 } else {
                     if (j == 0) {
-                        setTextView(i, j, 0, dayList)
+                        setTextView(i, j, 0, dayList, holder)
                     }
                 }
             }
@@ -643,13 +649,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 0) {
-                        setTextView(i, j, 1, dayList)
+                        setTextView(i, j, 1, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 1, dayList)
+                    setTextView(i, j, 1, dayList, holder)
                 } else {
                     if (j <= 1) {
-                        setTextView(i, j, 1, dayList)
+                        setTextView(i, j, 1, dayList, holder)
                     }
                 }
             }
@@ -661,13 +667,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 1) {
-                        setTextView(i, j, 2, dayList)
+                        setTextView(i, j, 2, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 2, dayList)
+                    setTextView(i, j, 2, dayList, holder)
                 } else {
                     if (j <= 2) {
-                        setTextView(i, j, 2, dayList)
+                        setTextView(i, j, 2, dayList, holder)
                     }
                 }
             }
@@ -679,13 +685,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 2) {
-                        setTextView(i, j, 3, dayList)
+                        setTextView(i, j, 3, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 3, dayList)
+                    setTextView(i, j, 3, dayList, holder)
                 } else {
                     if (j <= 3) {
-                        setTextView(i, j, 3, dayList)
+                        setTextView(i, j, 3, dayList, holder)
                     }
                 }
             }
@@ -697,13 +703,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 3) {
-                        setTextView(i, j, 4, dayList)
+                        setTextView(i, j, 4, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 4, dayList)
+                    setTextView(i, j, 4, dayList, holder)
                 } else {
                     if (j <= 4) {
-                        setTextView(i, j, 4, dayList)
+                        setTextView(i, j, 4, dayList, holder)
                     }
                 }
             }
@@ -715,13 +721,13 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 4) {
-                        setTextView(i, j, 5, dayList)
+                        setTextView(i, j, 5, dayList, holder)
                     }
                 } else if (i <= 3) {
-                    setTextView(i, j, 5, dayList)
+                    setTextView(i, j, 5, dayList, holder)
                 } else {
                     if (j <= 5) {
-                        setTextView(i, j, 5, dayList)
+                        setTextView(i, j, 5, dayList, holder)
                     }
                 }
             }
@@ -733,10 +739,10 @@ class CurrentMonthCreator(val context: Context) {
             for (j in 0..6) {
                 if (i == 0) {
                     if (j > 5) {
-                        setTextView(i, j, 6, dayList)
+                        setTextView(i, j, 6, dayList, holder)
                     }
                 } else if (i <= 4) {
-                    setTextView(i, j, 6, dayList)
+                    setTextView(i, j, 6, dayList, holder)
                 }
             }
         }
@@ -748,13 +754,35 @@ class CurrentMonthCreator(val context: Context) {
                 cellsList[i][j].setText("")
             }
         }
+//        clearCurrent()
     }
 
-    private fun setTextView(i: Int, j: Int, move: Int, dayList: ArrayList<Date>) {
+    private fun setTextView(i: Int, j: Int, move: Int, dayList: ArrayList<Date>, holder: CurrentRentsViewHolder) {
         val db = DataBaseHelper(context)
         cellsList[i][j].setText(dayList[((7 * i) + j) - move].day.toString())
         cellsList[i][j].setOnClickListener {
-
+//            MyApp.clearColors = true
+//            Handler().postDelayed({
+//                cellsList[i][j].setBackgroundColor(context.getColor(R.color.colorYellowLight))
+                MyApp.dateId = dayList[((7 * i) + j) - move].id
+                MyApp.recyclerUpdate = true
+//            }, 300)
         }
     }
+
+//    fun setChecked() {
+//        val db = DataBaseHelper(context)
+//        val date = db.getDate(MyApp.dateId)
+//
+//    }
+//
+//    fun clearCurrent() {
+//        for (i in 0..5) {
+//            for (j in 0..6) {
+//                (context as MainActivity).runOnUiThread {
+//                    cellsList[i][j].setBackgroundColor(context.getColor(R.color.colorYellowBackground))
+//                }
+//            }
+//        }
+//    }
 }

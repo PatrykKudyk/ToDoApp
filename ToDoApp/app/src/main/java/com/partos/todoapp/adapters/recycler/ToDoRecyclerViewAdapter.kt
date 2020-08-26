@@ -1,5 +1,7 @@
 package com.partos.todoapp.adapters.recycler
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +36,7 @@ class ToDoRecyclerViewAdapter(var todoList: ArrayList<ToDo>) :
         }
 
         if (position == todoList.size - 1) {
-            holder.itemView.row_to_do_save.visibility = View.VISIBLE
+//            holder.itemView.row_to_do_save.visibility = View.VISIBLE
             holder.itemView.row_to_do_edit.visibility = View.VISIBLE
             holder.itemView.row_to_do_text.visibility = View.GONE
         } else {
@@ -76,6 +78,23 @@ class ToDoRecyclerViewAdapter(var todoList: ArrayList<ToDo>) :
                 db.updateToDo(todoList[position])
             }
         }
+        holder.itemView.row_to_do_edit.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+                if (holder.itemView.row_to_do_edit.text.toString() != "") {
+                    holder.itemView.row_to_do_save.visibility = View.VISIBLE
+                } else {
+                    holder.itemView.row_to_do_save.visibility = View.GONE
+                }
+            }
+        })
     }
 
 }

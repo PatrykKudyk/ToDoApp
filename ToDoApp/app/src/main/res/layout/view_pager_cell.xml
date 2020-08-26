@@ -11,6 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:visibility="gone"
+        tools:visibility="visible"
         android:id="@+id/main_constraint_todo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,9 +26,22 @@
             android:text="@string/to_do"
             android:textSize="40dip"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintHeight_percent="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/main_todo_date_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fontFamily="@font/dustismo_bold"
+            android:gravity="center"
+            android:textSize="40dip"
+            tools:text="20 November 2020"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_todo_recycler_view"
@@ -36,9 +50,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.75"
+            app:layout_constraintHeight_percent="0.7"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/main_todo_date_text_view" />
 
         <Button
             android:id="@+id/main_todo_button_delete"

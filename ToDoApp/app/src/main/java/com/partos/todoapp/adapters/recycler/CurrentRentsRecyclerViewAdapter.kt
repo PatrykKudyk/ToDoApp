@@ -1,12 +1,17 @@
 package com.partos.todoapp.adapters.recycler
 
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.partos.todoapp.MyApp
 import com.partos.todoapp.R
+import com.partos.todoapp.activities.MainActivity
 import com.partos.todoapp.calendar.CurrentMonthCreator
+import com.partos.todoapp.logic.TimerThread
 import com.partos.todoapp.models.Date
+import com.partos.todoapp.models.ToDo
 import kotlinx.android.synthetic.main.cell_month.view.*
 
 class CurrentRentsRecyclerViewAdapter(
@@ -47,6 +52,23 @@ class CurrentRentsRecyclerViewAdapter(
             11 -> monthCreator.createNovember(holder, monthsList[position])
             12 -> monthCreator.createDecember(holder, monthsList[position])
         }
+//        var threadHandler: Handler
+//        val looperThread = TimerThread()
+//        looperThread.start()
+//        Handler().postDelayed({
+//            threadHandler = Handler(looperThread.looper)
+//            threadHandler.post(object : Runnable {
+//                override fun run() {
+//                    if (MyApp.clearColors) {
+////                        monthCreator.clearCurrent()
+//                        Handler().postDelayed({
+//                            MyApp.clearColors = false
+//                            }, 140)
+//                    }
+//                    threadHandler.postDelayed(this, 200)
+//                }
+//            })
+//        }, 300)
     }
 }
 

@@ -297,6 +297,32 @@ class DataBaseHelper(context: Context) :
         return dateList[0]
     }
 
+    fun getDate(dateId: Long): Date {
+        var dateList = ArrayList<Date>()
+        val db = readableDatabase
+        val selectQuery =
+            "Select * from ${TableInfo.TABLE_NAME_DATE} where ${BaseColumns._ID} = " +
+                    dateId.toString()
+        val result = db.rawQuery(selectQuery, null)
+        if (result.moveToFirst()) {
+            do {
+                val date = Date(
+                    result.getInt(result.getColumnIndex(BaseColumns._ID)).toLong(),
+                    result.getInt(result.getColumnIndex(TableInfo.TABLE_COLUMN_DAY)),
+                    result.getInt(result.getColumnIndex(TableInfo.TABLE_COLUMN_MONTH)),
+                    result.getInt(result.getColumnIndex(TableInfo.TABLE_COLUMN_YEAR)),
+                    result.getInt(result.getColumnIndex(TableInfo.TABLE_COLUMN_DAY_OF_WEEK))
+                )
+                dateList.add(date)
+            } while (result.moveToNext())
+        }
+
+        result.close()
+        db.close()
+        return dateList[0]
+    }
+
+
     fun addDate(day: Int, month: Int, year: Int, dayOfWeek: Int): Boolean {
         val db = this.writableDatabase
         val values = ContentValues()
