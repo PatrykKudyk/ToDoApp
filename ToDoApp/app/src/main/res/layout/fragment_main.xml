@@ -6,52 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".fragments.MainFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/current_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorYellowBackground">
+        />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:fontFamily="@font/dustismo_bold"
-            android:gravity="center"
-            android:text="@string/to_do"
-            android:textSize="40dip"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.15"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/main_todo_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <Button
-            android:id="@+id/main_todo_button_delete"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/colorYellowLight"
-            android:fontFamily="@font/dustismo_bold"
-            android:text="@string/delete_done"
-            android:textAllCaps="false"
-            android:textColor="@color/colorYellowDark"
-            android:textSize="28dip"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.09"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/main_todo_recycler_view" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>
+ </FrameLayout>

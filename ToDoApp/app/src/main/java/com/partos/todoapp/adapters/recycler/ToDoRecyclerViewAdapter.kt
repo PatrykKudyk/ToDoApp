@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.partos.flashback.db.DataBaseHelper
+import com.partos.todoapp.MyApp
 import com.partos.todoapp.R
 import com.partos.todoapp.logic.ToastHelper
 import com.partos.todoapp.models.ToDo
@@ -46,9 +47,10 @@ class ToDoRecyclerViewAdapter(var todoList: ArrayList<ToDo>) :
             if (holder.itemView.row_to_do_edit.text.toString() == "") {
                 ToastHelper().toastNoText(holder.itemView.context)
             } else {
-                db.addToDo(holder.itemView.row_to_do_edit.text.toString())
-                todoList = db.getToDoList()
-                todoList.add(ToDo(-1, "no", 0))
+                db.addToDo(holder.itemView.row_to_do_edit.text.toString(), MyApp.dateId)
+                holder.itemView.row_to_do_edit.setText("")
+                todoList = db.getToDoList(MyApp.dateId)
+                todoList.add(ToDo(-1, MyApp.dateId, "no", 0))
                 notifyDataSetChanged()
             }
         }

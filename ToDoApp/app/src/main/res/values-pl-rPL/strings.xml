@@ -4,5 +4,24 @@
     <string name="to_do">Do Zrobienia</string>
     <string name="toast_no_text">Nie podano tekstu</string>
     <string name="delete_done">Usuń zrobione</string>
+    <string name="january">Styczeń</string>
+    <string name="february">Luty</string>
+    <string name="march">Marzec</string>
+    <string name="april">Kwiecień</string>
+    <string name="may">Maj</string>
+    <string name="june">Czerwiec</string>
+    <string name="july">Lipiec</string>
+    <string name="august">Sierpień</string>
+    <string name="september">Wrzesień</string>
+    <string name="october">Październik</string>
+    <string name="november">Listopad</string>
+    <string name="december">Grudzień</string>
+    <string name="monday">Pon</string>
+    <string name="tuesday">Wt</string>
+    <string name="wednesday">Śr</string>
+    <string name="thursday">Czw</string>
+    <string name="friday">Pt</string>
+    <string name="saturday">Sob</string>
+    <string name="sunday">Ndz</string>
 
 </resources>
